@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// Black Colors
+// const Color eBlack = Color(0xff19202d);
+// const Color eLightBlack = Color(0xffeff5f4);
+// const Color eLighterBlack = Color(0xfffcfcfc);
+
 // WHite Colors
-const Color whiteC = Color(0xffffffff);
-const Color lightWhiteC = Color(0xffeff5f4);
-const Color lighterWhiteC = Color(0xfffcfcfc);
+const Color eWhite = Color(0xffffffff);
+const Color eLightWhite = Color(0xffeff5f4);
+const Color eLighterWhite = Color(0xfffcfcfc);
 
 // Grey Colors
-const Color greyC = Color(0xff9397a0);
-const Color lighterGreyC = Color(0xffa7a7a7);
+const Color eGrey = Color(0xff9397a0);
+const Color eLighterGrey = Color(0xffa7a7a7);
 
 // Blue Colors
-const Color blueC = Color(0xff5474fd);
-const Color lightBLueC = Color(0xff83b1ff);
-const Color lighterBLueC = Color(0xffc1d4f9);
-const Color darkBlueC = Color(0xff19202d);
+const Color eBlue = Color(0xff5474fd);
+const Color eLightBLue = Color(0xff83b1ff);
+const Color eLighterBLue = Color(0xffc1d4f9);
+const Color eDarkBlue = Color(0xff19202d);
 
 // Radius
 const double borderRadius = 16.0;
@@ -25,23 +30,21 @@ final borderC = OutlineInputBorder(
 );
 
 // Set font styles and colors from google font
-// Bold with dark blue
-final boldC = GoogleFonts.poppins(
-  color: darkBlueC,
-  fontWeight: FontWeight.w700,
-);
-// SemiBold with darkBlue
-final semiBoldC = GoogleFonts.poppins(
-  color: darkBlueC,
-  fontWeight: FontWeight.w700,
-);
-// MediumBold with darkBlue
-final mediumBoldC = GoogleFonts.poppins(
-  color: darkBlueC,
-  fontWeight: FontWeight.w700,
-);
+
 // Regular with darkBlue
-final regularC = GoogleFonts.poppins(
-  color: darkBlueC,
-  fontWeight: FontWeight.w700,
+final eRegularText = GoogleFonts.poppins(
+  color: eDarkBlue,
+  fontWeight: FontWeight.w500,
+);
+
+// Regular with darkBlue
+final eSemiBoldText = GoogleFonts.poppins(
+  color: eDarkBlue,
+  fontWeight: FontWeight.w600,
+);
+
+// Regular with darkBlue
+final eBoldText = GoogleFonts.poppins(
+  color: eDarkBlue,
+  fontWeight: FontWeight.w800,
 );
