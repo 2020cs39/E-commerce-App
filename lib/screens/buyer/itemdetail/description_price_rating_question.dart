@@ -3,8 +3,37 @@ import 'package:flutter/material.dart';
 import '../../../util/app_style.dart';
 import '../../../util/responsive.dart';
 
-class Description extends StatelessWidget {
-  const Description({super.key});
+class DescriptionPriceRatingQuestion extends StatelessWidget {
+  final String id;
+  final String description;
+  final String totalPrice;
+  final String discountedPrice;
+  final String discount;
+  final String rating;
+  final String ratingGivenBy;
+  final String sold;
+  final String questionText;
+  final Function(String) questionClick;
+  final String traderId;
+  final String traderName;
+  final Function(String) traderClick;
+
+  const DescriptionPriceRatingQuestion({
+    super.key,
+    required this.id,
+    required this.description,
+    required this.discountedPrice,
+    required this.totalPrice,
+    required this.discount,
+    required this.rating,
+    required this.ratingGivenBy,
+    required this.sold,
+    required this.questionText,
+    required this.questionClick,
+    required this.traderId,
+    required this.traderName,
+    required this.traderClick,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +45,10 @@ class Description extends StatelessWidget {
         decoration: BoxDecoration(
             color: eLighterWhite, borderRadius: BorderRadius.circular(10)),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'This is the watch wich have ver easy to see time kf f f f f f f f This is the watch wich have ver easy to s  f f f f ff This is the watch wich have ver easy to s ',
+              description,
               maxLines: 2,
               style: eRegularText.copyWith(
                   overflow: TextOverflow.ellipsis, fontSize: 14),
@@ -36,14 +66,14 @@ class Description extends StatelessWidget {
                   width: SizeConfig.horizontalBlockSize! * 2,
                 ),
                 Text(
-                  '1,750',
+                  discountedPrice,
                   style: eBoldText.copyWith(fontSize: 16),
                 ),
                 SizedBox(
                   width: SizeConfig.horizontalBlockSize! * 2.5,
                 ),
                 Text(
-                  'Rs. 2,500',
+                  'Rs. $totalPrice',
                   style: eRegularText.copyWith(
                     fontSize: 14,
                     decoration: TextDecoration.lineThrough,
@@ -53,7 +83,7 @@ class Description extends StatelessWidget {
                   width: SizeConfig.horizontalBlockSize! * 1.5,
                 ),
                 Text(
-                  '-30%',
+                  '-$discount%',
                   style: eRegularText.copyWith(
                     fontSize: 14,
                   ),
@@ -77,7 +107,7 @@ class Description extends StatelessWidget {
                   width: SizeConfig.horizontalBlockSize! * 0.5,
                 ),
                 Text(
-                  '4.3/5(18)   >  436 Sold',
+                  '$rating/5($ratingGivenBy)   >  $sold Sold',
                   style: eRegularText.copyWith(
                     fontSize: 14,
                   ),
@@ -88,6 +118,43 @@ class Description extends StatelessWidget {
               height: SizeConfig.verticalBlockSize! * 0.5,
             ),
             const HorizontalDivider(),
+            GestureDetector(
+              onTap: () {
+                questionClick(id);
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    questionText,
+                    style: eRegularText.copyWith(fontSize: 14),
+                  ),
+                  Text(
+                    '>',
+                    style: eRegularText.copyWith(fontSize: 25),
+                  ),
+                ],
+              ),
+            ),
+            const HorizontalDivider(),
+            GestureDetector(
+              onTap: () {
+                traderClick(traderId);
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    traderName,
+                    style: eRegularText.copyWith(fontSize: 14),
+                  ),
+                  Text(
+                    '>',
+                    style: eRegularText.copyWith(fontSize: 25),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
