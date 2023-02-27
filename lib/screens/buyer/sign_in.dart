@@ -20,9 +20,9 @@ class SignInBuyer extends StatelessWidget {
         SizedBox(height: SizeConfig.verticalBlockSize! * 1.5),
         const PageHeading("Sign In"),
         SizedBox(height: SizeConfig.verticalBlockSize! * 2),
-        InputField(controller: username, labelHint: "Email"),
+        InputField(controller: username, labelHint: "Email",icon: const Icon(Icons.person),),
         SizedBox(height: SizeConfig.verticalBlockSize! * 2),
-        InputField(controller: password, labelHint: "Password"),
+        InputField(controller: password, labelHint: "Password",icon: const Icon(Icons.password_sharp),),
         SizedBox(height: SizeConfig.verticalBlockSize! * 3),
         MyButton(
           buttonText: "Sign in",
