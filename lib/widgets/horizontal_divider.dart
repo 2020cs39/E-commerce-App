@@ -6,7 +6,7 @@ class HorizontalDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Divider(
-      thickness: 1,
+      thickness: 1.5,
     );
   }
 }

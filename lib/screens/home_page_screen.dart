@@ -1,11 +1,11 @@
-import 'package:ecommerce_app/util/data.dart';
-import 'package:ecommerce_app/widgets/carousel.dart';
-import 'package:ecommerce_app/widgets/icon_with_text.dart';
+import '../widgets/carousel.dart';
+import '../widgets/categories_listview.dart';
+import '../widgets/grid_view.dart';
+import '../widgets/icon_with_text.dart';
 import 'package:flutter/material.dart';
 import '../util/app_style.dart';
 import '../util/responsive.dart';
-import '../widgets/categories_listview.dart';
-import '../widgets/grid_view.dart';
+import '../util/data.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

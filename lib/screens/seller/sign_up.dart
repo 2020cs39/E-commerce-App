@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_app/widgets/button.dart';
 import 'package:ecommerce_app/widgets/input_field.dart';
 import 'package:ecommerce_app/widgets/page_header.dart';
@@ -6,7 +7,9 @@ import 'package:flutter/material.dart';
 import '../../util/responsive.dart';
 
 class SignUpSeller extends StatelessWidget {
-  const SignUpSeller({super.key});
+  SignUpSeller({super.key});
+  final CollectionReference _sellers =
+      FirebaseFirestore.instance.collection('sellers');
 
   @override
   Widget build(BuildContext context) {
@@ -42,8 +45,34 @@ class SignUpSeller extends StatelessWidget {
         SizedBox(height: SizeConfig.verticalBlockSize! * 3),
         MyButton(
           buttonText: "Sign Up",
-          onTap: () {},
-        )
+          onTap: () async {
+            final String fname = fullName.text;
+            final String uname = username.text;
+            final String pin = password.text;
+            final String phoneno = phone.text;
+            final String cnic = cnicNumber.text;
+            final String adress = address.text;
+            final String citi = city.text;
+
+            await _sellers.add({
+              'full name': fname,
+              'username': uname,
+              'password': pin,
+              'phone': phoneno,
+              'cnic': cnic,
+              'address': adress,
+              'city': citi
+            });
+            username.text = '';
+            password.text = '';
+            fullName.text = '';
+            phone.text = '';
+            cnicNumber.text = '';
+            address.text = '';
+            city.text = '';
+          },
+        ),
+        SizedBox(height: SizeConfig.verticalBlockSize! * 3)
       ],
     );
   }
