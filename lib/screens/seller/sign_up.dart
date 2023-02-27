@@ -54,30 +54,22 @@ class SignUpSeller extends StatelessWidget {
             final String adress = address.text;
             final String citi = city.text;
 
-            if (uname != null &&
-                pin != null &&
-                fname != null &&
-                phoneno != null &&
-                cnic != null &&
-                adress != null &&
-                citi != null) {
-              await _sellers.add({
-                'full name': fname,
-                'username': uname,
-                'password': pin,
-                'phone': phoneno,
-                'cnic': cnic,
-                'address': adress,
-                'city': citi
-              });
-              username.text = '';
-              password.text = '';
-              fullName.text = '';
-              phone.text = '';
-              cnicNumber.text = '';
-              address.text = '';
-              city.text = '';
-            }
+            await _sellers.add({
+              'full name': fname,
+              'username': uname,
+              'password': pin,
+              'phone': phoneno,
+              'cnic': cnic,
+              'address': adress,
+              'city': citi
+            });
+            username.text = '';
+            password.text = '';
+            fullName.text = '';
+            phone.text = '';
+            cnicNumber.text = '';
+            address.text = '';
+            city.text = '';
           },
         ),
         SizedBox(height: SizeConfig.verticalBlockSize! * 3)
