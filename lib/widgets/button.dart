@@ -27,7 +27,14 @@ class MyButton extends StatelessWidget {
             ),
           ),
         ),
+<<<<<<< Updated upstream
       ),
     );
   }
 }
+=======
+     ),
+    );
+  }
+}
+>>>>>>> Stashed changes
