@@ -140,6 +140,7 @@ class _HomePageState extends State<HomePage> {
                   height: SizeConfig.verticalBlockSize! * 1,
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text(
                       "Categories",
@@ -148,7 +149,6 @@ class _HomePageState extends State<HomePage> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const Spacer(),
                     TextButton(
                       onPressed: () {},
                       child: const Text(
