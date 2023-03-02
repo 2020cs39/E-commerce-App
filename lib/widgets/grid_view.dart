@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/screens/buyer/itemdetail/detail.dart';
 import 'package:flutter/material.dart';
 
 import '../util/app_style.dart';
@@ -17,7 +18,10 @@ class TwoColumnGridView extends StatelessWidget {
         physics: const ScrollPhysics(),
         children: justForYouItems
             .map((item) => InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => ItemDetail()));
+                  },
                   child: Container(
                     height: 400,
                     margin: const EdgeInsets.all(5),

@@ -16,7 +16,7 @@ class DescriptionInDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(SizeConfig.verticalBlockSize! * 1.8),
-      color: eLighterWhite,
+      color: eWhite,
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         SizedBox(
           height: SizeConfig.verticalBlockSize! * 0.5,

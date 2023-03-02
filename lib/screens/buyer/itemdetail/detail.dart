@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/screens/buyer/itemdetail/description_in_detail.dart';
 import 'package:ecommerce_app/screens/buyer/itemdetail/description_price_rating_question.dart';
 import 'package:ecommerce_app/screens/buyer/itemdetail/spec_delivery_service.dart';
+import 'package:ecommerce_app/util/app_style.dart';
 import 'package:flutter/material.dart';
 import '../../../util/responsive.dart';
 
@@ -56,53 +57,56 @@ class ItemDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return ListView(
-      scrollDirection: Axis.vertical,
-      children: [
-        SizedBox(
-          height: SizeConfig.verticalBlockSize! * 5,
-        ),
-        SizedBox(
-          height: SizeConfig.verticalBlockSize! * 34,
-          child: Image.network(
-              'https://cdn.pixabay.com/photo/2018/03/13/11/26/clock-3222267_960_720.jpg'),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        DescriptionPriceRatingQuestion(
-          id: itemId,
-          description: itemDesc,
-          discountedPrice: itemDiscountedPrice,
-          totalPrice: itemTotalPrice,
-          discount: itemDiscount,
-          rating: itemRating,
-          ratingGivenBy: itemRatingGiveBy,
-          sold: itemSold,
-          questionText: itemQuestion,
-          questionClick: clickItemQuestion,
-          traderId: traderId,
-          traderName: traderName,
-          traderClick: clickTrader,
-        ),
-        SpecDeliveryService(
-          id: itemId,
-          brandName: itemBrandName,
-          deliveryTime: itemDeliveryTime,
-          deliveryPrice: itemDeliveryPrice,
-          shipFrom: itemShipFrom,
-          deliveryClick: clickDelivery,
-          returnTime: itemReturnTime,
-          warranty: itemWarranty,
-          serviceClick: clickService,
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        DescriptionInDetail(
-            descriptionText: detailDescription,
-            descriptionList: detailDescriptionList),
-      ],
+    return Scaffold(
+      backgroundColor: eLighterGrey,
+      body: ListView(
+        scrollDirection: Axis.vertical,
+        children: [
+          SizedBox(
+            height: SizeConfig.verticalBlockSize! * 5,
+          ),
+          SizedBox(
+            height: SizeConfig.verticalBlockSize! * 34,
+            child: Image.network(
+                'https://cdn.pixabay.com/photo/2018/03/13/11/26/clock-3222267_960_720.jpg'),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          DescriptionPriceRatingQuestion(
+            id: itemId,
+            description: itemDesc,
+            discountedPrice: itemDiscountedPrice,
+            totalPrice: itemTotalPrice,
+            discount: itemDiscount,
+            rating: itemRating,
+            ratingGivenBy: itemRatingGiveBy,
+            sold: itemSold,
+            questionText: itemQuestion,
+            questionClick: clickItemQuestion,
+            traderId: traderId,
+            traderName: traderName,
+            traderClick: clickTrader,
+          ),
+          SpecDeliveryService(
+            id: itemId,
+            brandName: itemBrandName,
+            deliveryTime: itemDeliveryTime,
+            deliveryPrice: itemDeliveryPrice,
+            shipFrom: itemShipFrom,
+            deliveryClick: clickDelivery,
+            returnTime: itemReturnTime,
+            warranty: itemWarranty,
+            serviceClick: clickService,
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          DescriptionInDetail(
+              descriptionText: detailDescription,
+              descriptionList: detailDescriptionList),
+        ],
+      ),
     );
   }
 }

@@ -43,7 +43,7 @@ class DescriptionPriceRatingQuestion extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(SizeConfig.verticalBlockSize! * 1.8),
         decoration: BoxDecoration(
-            color: eLighterWhite, borderRadius: BorderRadius.circular(10)),
+            color: eWhite, borderRadius: BorderRadius.circular(10)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
