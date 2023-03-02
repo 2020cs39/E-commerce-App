@@ -1,7 +1,7 @@
+import 'package:ecommerce_app/screens/buyer/itemdetail/detail.dart';
+import 'package:ecommerce_app/util/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-
-import 'package:ecommerce_app/screens/home_page_screen.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,7 +16,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(body: HomePage()),
+      home: Scaffold(
+        body: ItemDetail(),
+        backgroundColor: eLighterGrey,
+      ),
     );
   }
 }

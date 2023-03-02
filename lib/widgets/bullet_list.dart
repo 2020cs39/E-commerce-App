@@ -10,9 +10,7 @@ class BulletList extends StatelessWidget {
   Widget build(BuildContext context) {
     return BulletedList(
         crossAxisAlignment: CrossAxisAlignment.start,
-        style: eRegularText.copyWith(
-          fontSize: 14,
-        ),
+        style: eRegular,
         listItems: dataList,
         bulletColor: eGrey);
   }

@@ -44,18 +44,14 @@ class SpecDeliveryService extends StatelessWidget {
                   width: SizeConfig.horizontalBlockSize! * 23,
                   child: Text(
                     'Brand',
-                    style: eRegularText.copyWith(
-                      fontSize: 14,
-                    ),
+                    style: eBoldText,
                   ),
                 ),
                 SizedBox(
                   width: SizeConfig.horizontalBlockSize! * 61,
                   child: Text(
                     brandName,
-                    style: eRegularText.copyWith(
-                      fontSize: 14,
-                    ),
+                    style: eRegular,
                   ),
                 ),
               ],
@@ -74,14 +70,13 @@ class SpecDeliveryService extends StatelessWidget {
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
                     width: SizeConfig.horizontalBlockSize! * 23,
                     child: Text(
                       'Delivery',
-                      style: eRegularText.copyWith(
-                        fontSize: 14,
-                      ),
+                      style: eBoldText,
                     ),
                   ),
                   SizedBox(
@@ -96,18 +91,14 @@ class SpecDeliveryService extends StatelessWidget {
                               width: SizeConfig.horizontalBlockSize! * 37,
                               child: Text(
                                 'Standard Delivery $deliveryTime days',
-                                style: eRegularText.copyWith(
-                                  fontSize: 14,
-                                ),
+                                style: eRegular,
                               ),
                             ),
                             SizedBox(
                               width: SizeConfig.horizontalBlockSize! * 20,
                               child: Text(
-                                'Rs. $deliveryPrice 000',
-                                style: eRegularText.copyWith(
-                                  fontSize: 14,
-                                ),
+                                'Rs. $deliveryPrice',
+                                style: eRegular,
                               ),
                             ),
                           ],
@@ -115,20 +106,17 @@ class SpecDeliveryService extends StatelessWidget {
                         SizedBox(height: SizeConfig.horizontalBlockSize! * 1),
                         Text(
                           'Ship From $shipFrom',
-                          style: eRegularText.copyWith(
-                            fontSize: 14,
-                          ),
+                          style: eRegular,
                         ),
                       ],
                     ),
                   ),
                   SizedBox(
-                    width: SizeConfig.horizontalBlockSize! * 3.8,
-                    child: Text(
-                      '>',
-                      style: eRegularText.copyWith(fontSize: 25),
-                    ),
-                  ),
+                      width: SizeConfig.horizontalBlockSize! * 3.8,
+                      child: Text(
+                        '>',
+                        style: eRegular,
+                      )),
                 ],
               ),
             ),
@@ -147,14 +135,13 @@ class SpecDeliveryService extends StatelessWidget {
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
                     width: SizeConfig.horizontalBlockSize! * 23,
                     child: Text(
                       'Service',
-                      style: eRegularText.copyWith(
-                        fontSize: 14,
-                      ),
+                      style: eBoldText,
                     ),
                   ),
                   SizedBox(
@@ -164,16 +151,12 @@ class SpecDeliveryService extends StatelessWidget {
                       children: [
                         Text(
                           '$returnTime days easy return',
-                          style: eRegularText.copyWith(
-                            fontSize: 14,
-                          ),
+                          style: eRegular,
                         ),
                         SizedBox(height: SizeConfig.horizontalBlockSize! * 1),
                         Text(
                           warranty,
-                          style: eRegularText.copyWith(
-                            fontSize: 14,
-                          ),
+                          style: eRegular,
                         ),
                       ],
                     ),
@@ -182,7 +165,7 @@ class SpecDeliveryService extends StatelessWidget {
                     width: SizeConfig.horizontalBlockSize! * 3.8,
                     child: Text(
                       '>',
-                      style: eRegularText.copyWith(fontSize: 25),
+                      style: eRegular.copyWith(fontSize: 25),
                     ),
                   ),
                 ],

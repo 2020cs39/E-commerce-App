@@ -50,8 +50,9 @@ class DescriptionPriceRatingQuestion extends StatelessWidget {
             Text(
               description,
               maxLines: 2,
-              style: eRegularText.copyWith(
-                  overflow: TextOverflow.ellipsis, fontSize: 14),
+              style: eProductPageTitle.copyWith(
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
             SizedBox(
               height: SizeConfig.verticalBlockSize! * 1,
@@ -60,34 +61,28 @@ class DescriptionPriceRatingQuestion extends StatelessWidget {
               children: [
                 Text(
                   'Rs.',
-                  style: eBoldText.copyWith(fontSize: 14),
+                  style: eDiscountedPrice,
                 ),
                 SizedBox(
                   width: SizeConfig.horizontalBlockSize! * 2,
                 ),
                 Text(
                   discountedPrice,
-                  style: eBoldText.copyWith(fontSize: 16),
+                  style: eDiscountedPrice,
                 ),
                 SizedBox(
                   width: SizeConfig.horizontalBlockSize! * 2.5,
                 ),
                 Text(
                   'Rs. $totalPrice',
-                  style: eRegularText.copyWith(
-                    fontSize: 14,
+                  style: eOriginalPrice.copyWith(
                     decoration: TextDecoration.lineThrough,
                   ),
                 ),
                 SizedBox(
                   width: SizeConfig.horizontalBlockSize! * 1.5,
                 ),
-                Text(
-                  '-$discount%',
-                  style: eRegularText.copyWith(
-                    fontSize: 14,
-                  ),
-                ),
+                Text('-$discount%', style: eOriginalPrice),
               ],
             ),
             // SizedBox(
@@ -108,9 +103,7 @@ class DescriptionPriceRatingQuestion extends StatelessWidget {
                 ),
                 Text(
                   '$rating/5($ratingGivenBy)   >  $sold Sold',
-                  style: eRegularText.copyWith(
-                    fontSize: 14,
-                  ),
+                  style: eRegular,
                 ),
               ],
             ),
@@ -125,13 +118,10 @@ class DescriptionPriceRatingQuestion extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    questionText,
-                    style: eRegularText.copyWith(fontSize: 14),
-                  ),
+                  Text(questionText, style: eRegular),
                   Text(
                     '>',
-                    style: eRegularText.copyWith(fontSize: 25),
+                    style: eRegular.copyWith(fontSize: 25),
                   ),
                 ],
               ),
@@ -146,11 +136,11 @@ class DescriptionPriceRatingQuestion extends StatelessWidget {
                 children: [
                   Text(
                     traderName,
-                    style: eRegularText.copyWith(fontSize: 14),
+                    style: eRegular,
                   ),
                   Text(
                     '>',
-                    style: eRegularText.copyWith(fontSize: 25),
+                    style: eRegular.copyWith(fontSize: 25),
                   ),
                 ],
               ),
