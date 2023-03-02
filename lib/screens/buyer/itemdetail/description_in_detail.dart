@@ -23,9 +23,7 @@ class DescriptionInDetail extends StatelessWidget {
         ),
         Text(
           'Description',
-          style: eSemiBoldText.copyWith(
-            fontSize: 16,
-          ),
+          style: eBoldText,
         ),
         SizedBox(
           height: SizeConfig.verticalBlockSize! * 1.5,

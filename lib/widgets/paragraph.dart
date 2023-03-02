@@ -7,11 +7,6 @@ class Paragraph extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: eRegularText.copyWith(
-        fontSize: 14,
-      ),
-    );
+    return Text(text, style: eRegular);
   }
 }

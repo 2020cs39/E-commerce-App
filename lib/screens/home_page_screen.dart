@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
       length: 4,
       child: SafeArea(
         child: Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: eLighterGrey,
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             selectedItemColor: Colors.blue,

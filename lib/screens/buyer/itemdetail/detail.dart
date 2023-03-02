@@ -65,7 +65,8 @@ class ItemDetail extends StatelessWidget {
         SizedBox(
           height: SizeConfig.verticalBlockSize! * 34,
           child: Image.network(
-              'https://cdn.pixabay.com/photo/2018/03/13/11/26/clock-3222267_960_720.jpg'),
+              'https://cdn.pixabay.com/photo/2018/03/13/11/26/clock-3222267_960_720.jpg',
+              fit: BoxFit.cover),
         ),
         const SizedBox(
           height: 10,
