@@ -53,13 +53,14 @@ final eDiscountedPrice = GoogleFonts.poppins(
 final eRegular = GoogleFonts.poppins(
   color: eDarkBlue,
   fontWeight: FontWeight.w500,
-  fontSize: 16,
+  fontSize: 15,
 );
 
 // Regular with darkBlue
 final eSemiBold = GoogleFonts.poppins(
   color: eDarkBlue,
   fontWeight: FontWeight.w600,
+  fontSize: 16,
 );
 
 // Regular with darkBlue
