@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_app/util/responsive.dart';
@@ -7,15 +8,23 @@ import 'package:flutter/material.dart';
 import 'package:ecommerce_app/widgets/input_field.dart';
 import 'package:ecommerce_app/widgets/button.dart';
 
+class AddProduct extends StatefulWidget {
+  const AddProduct({super.key});
+
+  @override
+  _AddProductState createState() => _AddProductState();
+}
+
 class _AddProductState extends State<AddProduct> {
   TextEditingController productName = TextEditingController();
   TextEditingController productQuantity = TextEditingController();
   TextEditingController productBuyPrice = TextEditingController();
   TextEditingController productSellPrice = TextEditingController();
   TextEditingController productDescription = TextEditingController();
-  String buttonText = 'Upload Image';
   String imageUrl = '';
   String localImagePath = '';
+
+  void pickImage() async {}
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +35,7 @@ class _AddProductState extends State<AddProduct> {
         padding: const EdgeInsets.all(20),
         child: ListView(
           children: <Widget>[
+            SizedBox(height: SizeConfig.verticalBlockSize! * 3),
             const Text(
               'Add Product',
               style: TextStyle(
@@ -34,7 +44,7 @@ class _AddProductState extends State<AddProduct> {
               ),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: SizeConfig.verticalBlockSize! * 1),
+            SizedBox(height: SizeConfig.verticalBlockSize! * 2),
             InputField(
               controller: productName,
               labelHint: 'Name',
@@ -72,47 +82,80 @@ class _AddProductState extends State<AddProduct> {
                         localImagePath = "";
                       });
                     },
-                    child: Image.file(
-                      File(localImagePath),
-                      width: 150,
-                      height: 150,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.file(
+                          File(localImagePath),
+                          width: 200,
+                          height: 200,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
                     ),
                   )
-                : Container(),
-            MyButton(
-              buttonText: buttonText,
-              icon: const Icon(Icons.add_a_photo_sharp),
-              onTap: () async {
-                var image =
-                    await ImagePicker().pickImage(source: ImageSource.gallery);
-
-                if (image != null) {
-                  setState(() {
-                    buttonText = 'Image Uploaded';
-                    localImagePath = image.path;
-                  });
-                }
-                String uniqueImageName =
-                    DateTime.now().millisecondsSinceEpoch.toString();
-                Reference referenceRoot = FirebaseStorage.instance.ref();
-                Reference referenceDirectoryImage =
-                    referenceRoot.child('images');
-                Reference referenceFileImage =
-                    referenceDirectoryImage.child(uniqueImageName);
-                try {
-                  await referenceFileImage.putFile(File(image!.path));
-                  imageUrl = await referenceFileImage.getDownloadURL();
-                } catch (e) {
-                  //print(e.toString());
-                }
-              },
-            ),
+                : Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: InkWell(
+                      onTap: () async {
+                        var image = await ImagePicker()
+                            .pickImage(source: ImageSource.gallery);
+                        if (image != null) {
+                          setState(() {
+                            localImagePath = image.path;
+                          });
+                        }
+                      },
+                      child: Container(
+                        width: 200,
+                        height: 200,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Icon(
+                              Icons.image,
+                              color: Colors.grey,
+                              size: 50,
+                            ),
+                            Text(
+                              "Upload Image",
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
             SizedBox(height: SizeConfig.verticalBlockSize! * 1),
             MyButton(
                 buttonText: "Add Product",
                 icon: const Icon(Icons.add),
-                onTap: () {
-                  if (imageUrl.isNotEmpty) {
+                onTap: () async {
+                  String uniqueImageName =
+                      DateTime.now().millisecondsSinceEpoch.toString();
+                  Reference referenceRoot = FirebaseStorage.instance.ref();
+                  Reference referenceDirectoryImage =
+                      referenceRoot.child('images');
+                  Reference referenceFileImage =
+                      referenceDirectoryImage.child(uniqueImageName);
+                  try {
+                    File convertedImagePath =
+                        await File(localImagePath).create();
+                    await referenceFileImage.putFile(convertedImagePath);
+                    imageUrl = await referenceFileImage.getDownloadURL();
+                  } catch (e) {
+                    log(e.toString());
+                  }
+
+                  if (imageUrl != '') {
                     FirebaseFirestore.instance
                         .collection('sellerproducts')
                         .add({
@@ -129,9 +172,8 @@ class _AddProductState extends State<AddProduct> {
                     productSellPrice.clear();
                     productDescription.clear();
                     imageUrl = '';
-                    buttonText = 'Upload Image';
-                  }
-                  if (imageUrl.isEmpty) {
+                    localImagePath = '';
+                  } else {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
                         content: Text('Please Upload Image'),
@@ -144,11 +186,4 @@ class _AddProductState extends State<AddProduct> {
       ),
     ));
   }
-}
-
-class AddProduct extends StatefulWidget {
-  const AddProduct({super.key});
-
-  @override
-  _AddProductState createState() => _AddProductState();
 }
