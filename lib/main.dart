@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/screens/seller/add_product.dart';
+import 'package:ecommerce_app/screens/home_page_screen.dart';
 import 'package:ecommerce_app/util/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: eLighterGrey,
-        body: AddProduct(),
+        body: HomePage(),
       ),
     );
   }

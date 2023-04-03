@@ -1,14 +1,20 @@
 import 'package:ecommerce_app/screens/buyer/itemdetail/detail.dart';
 import 'package:flutter/material.dart';
+
 import '../util/app_style.dart';
 import '../util/data.dart';
 import '../util/responsive.dart';
 
-class TwoColumnGridView extends StatelessWidget {
+class TwoColumnGridView extends StatefulWidget {
   const TwoColumnGridView({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<TwoColumnGridView> createState() => _TwoColumnGridViewState();
+}
+
+class _TwoColumnGridViewState extends State<TwoColumnGridView> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -18,7 +24,12 @@ class TwoColumnGridView extends StatelessWidget {
       physics: const ScrollPhysics(),
       children: justForYouItems
           .map((item) => InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ItemDetail()));
+                },
                 child: Container(
                   height: 500,
                   margin: const EdgeInsets.all(5),
@@ -54,24 +65,31 @@ class TwoColumnGridView extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             )),
                         Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            const Icon(Icons.star,
-                                color: Colors.orange, size: 20),
-                            Text("${item["averageRating"]} /5"),
+                            const Icon(Icons.star, color: eOrange, size: 20),
+                            Text("${item["averageRating"]}/5",
+                                style: const TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                )),
                             const SizedBox(
                               width: 5,
                             ),
-                            Text("(${item["totalReviews"]})"),
+                            Text("(${item["totalReviews"]})",
+                                style: const TextStyle(
+                                  fontSize: 15,
+                                )),
                           ],
                         ),
                         const SizedBox(
                           height: 10,
                         ),
-                        Text("${item["price"]} PKR",
+                        Text("PKR ${item["price"]}",
                             style: const TextStyle(
-                                fontSize: 25,
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.orange)),
+                                color: eOrange)),
                       ],
                     ),
                   ),
