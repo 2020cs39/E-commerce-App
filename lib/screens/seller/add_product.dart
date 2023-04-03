@@ -7,15 +7,16 @@ import 'package:flutter/material.dart';
 import 'package:ecommerce_app/widgets/input_field.dart';
 import 'package:ecommerce_app/widgets/button.dart';
 
-TextEditingController productName = TextEditingController();
-TextEditingController productQuantity = TextEditingController();
-TextEditingController productBuyPrice = TextEditingController();
-TextEditingController productSellPrice = TextEditingController();
-TextEditingController productDescription = TextEditingController();
-String buttonText = 'Upload Image';
-String imageUrl = '';
-
 class _AddProductState extends State<AddProduct> {
+  TextEditingController productName = TextEditingController();
+  TextEditingController productQuantity = TextEditingController();
+  TextEditingController productBuyPrice = TextEditingController();
+  TextEditingController productSellPrice = TextEditingController();
+  TextEditingController productDescription = TextEditingController();
+  String buttonText = 'Upload Image';
+  String imageUrl = '';
+  String localImagePath = '';
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -64,57 +65,80 @@ class _AddProductState extends State<AddProduct> {
               icon: const Icon(Icons.description),
             ),
             SizedBox(height: SizeConfig.verticalBlockSize! * 1),
+            localImagePath != ""
+                ? InkWell(
+                    onTap: () {
+                      setState(() {
+                        localImagePath = "";
+                      });
+                    },
+                    child: Image.file(
+                      File(localImagePath),
+                      width: 150,
+                      height: 150,
+                    ),
+                  )
+                : Container(),
             MyButton(
               buttonText: buttonText,
+              icon: const Icon(Icons.add_a_photo_sharp),
               onTap: () async {
                 var image =
                     await ImagePicker().pickImage(source: ImageSource.gallery);
+
                 if (image != null) {
                   setState(() {
                     buttonText = 'Image Uploaded';
+                    localImagePath = image.path;
                   });
                 }
-                String uniqueImageName = DateTime.now().millisecondsSinceEpoch.toString();
+                String uniqueImageName =
+                    DateTime.now().millisecondsSinceEpoch.toString();
                 Reference referenceRoot = FirebaseStorage.instance.ref();
                 Reference referenceDirectoryImage =
                     referenceRoot.child('images');
-                Reference referenceFileImage = referenceDirectoryImage
-                    .child(uniqueImageName);
+                Reference referenceFileImage =
+                    referenceDirectoryImage.child(uniqueImageName);
                 try {
                   await referenceFileImage.putFile(File(image!.path));
                   imageUrl = await referenceFileImage.getDownloadURL();
                 } catch (e) {
-                  print(e.toString());
+                  //print(e.toString());
                 }
               },
             ),
             SizedBox(height: SizeConfig.verticalBlockSize! * 1),
-            MyButton(buttonText: "Add Product", onTap: () {
-              if(imageUrl.isNotEmpty){
-                FirebaseFirestore.instance.collection('sellerproducts').add({
-                  'Name': productName.text,
-                  'Quantity': productQuantity.text,
-                  'BuyPrice': productBuyPrice.text,
-                  'SellPrice': productSellPrice.text,
-                  'Description': productDescription.text,
-                  'ImageUrl': imageUrl,
-                });
-                productName.clear();
-                productQuantity.clear();
-                productBuyPrice.clear();
-                productSellPrice.clear();
-                productDescription.clear();
-                imageUrl = '';
-                buttonText = 'Upload Image';
-              }
-              if(imageUrl.isEmpty){
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Please Upload Image'),
-                  ),
-                );
-              }
-            }),
+            MyButton(
+                buttonText: "Add Product",
+                icon: const Icon(Icons.add),
+                onTap: () {
+                  if (imageUrl.isNotEmpty) {
+                    FirebaseFirestore.instance
+                        .collection('sellerproducts')
+                        .add({
+                      'Name': productName.text,
+                      'Quantity': productQuantity.text,
+                      'BuyPrice': productBuyPrice.text,
+                      'SellPrice': productSellPrice.text,
+                      'Description': productDescription.text,
+                      'ImageUrl': imageUrl,
+                    });
+                    productName.clear();
+                    productQuantity.clear();
+                    productBuyPrice.clear();
+                    productSellPrice.clear();
+                    productDescription.clear();
+                    imageUrl = '';
+                    buttonText = 'Upload Image';
+                  }
+                  if (imageUrl.isEmpty) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Please Upload Image'),
+                      ),
+                    );
+                  }
+                }),
           ],
         ),
       ),
