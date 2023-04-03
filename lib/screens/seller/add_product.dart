@@ -24,8 +24,6 @@ class _AddProductState extends State<AddProduct> {
   String imageUrl = '';
   String localImagePath = '';
 
-  void pickImage() async {}
-
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);

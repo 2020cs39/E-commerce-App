@@ -1,8 +1,9 @@
+import 'package:flutter/material.dart';
+
+import 'package:ecommerce_app/widgets/just_for_you.dart';
 import '../widgets/carousel.dart';
 import '../widgets/categories_listview.dart';
-import '../widgets/grid_view.dart';
 import '../widgets/icon_with_text.dart';
-import 'package:flutter/material.dart';
 import '../util/app_style.dart';
 import '../util/responsive.dart';
 import '../util/data.dart';
@@ -27,11 +28,11 @@ class _HomePageState extends State<HomePage> {
       length: 4,
       child: SafeArea(
         child: Scaffold(
-          backgroundColor: eLighterGrey,
+          backgroundColor: eWhite,
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
-            selectedItemColor: Colors.blue,
-            selectedIconTheme: const IconThemeData(color: Colors.blue),
+            selectedItemColor: eOrange,
+            selectedIconTheme: const IconThemeData(color: eOrange),
             currentIndex: _currentIndex,
             items: const [
               BottomNavigationBarItem(
@@ -155,7 +156,7 @@ class _HomePageState extends State<HomePage> {
                         "See all",
                         style: TextStyle(
                           fontSize: 15,
-                          color: Colors.blue,
+                          color: eOrange,
                         ),
                       ),
                     ),
@@ -165,68 +166,7 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   height: SizeConfig.verticalBlockSize! * 3,
                 ),
-                const Text("JUST FOR YOU",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.orange)),
-                SizedBox(
-                  height: SizeConfig.verticalBlockSize! * 1,
-                ),
-                Container(
-                  child: const TabBar(
-                      indicatorSize: TabBarIndicatorSize.label,
-                      tabs: [
-                        Tab(
-                          child: Text(
-                            "ALL",
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                            ),
-                          ),
-                        ),
-                        Tab(
-                          child: Text(
-                            "MALL",
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                            ),
-                          ),
-                        ),
-                        Tab(
-                          child: Text(
-                            "FASHION",
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                            ),
-                          ),
-                        ),
-                        Tab(
-                          child: Text(
-                            "BEAUTY",
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                            ),
-                          ),
-                        ),
-                      ]),
-                ),
-                SizedBox(
-                  height: SizeConfig.verticalBlockSize! * 50,
-                  child: const TabBarView(
-                    children: [
-                      TwoColumnGridView(),
-                      TwoColumnGridView(),
-                      TwoColumnGridView(),
-                      TwoColumnGridView(),
-                    ],
-                  ),
-                ),
+                const JustForYouSection()
               ],
             ),
           ),
