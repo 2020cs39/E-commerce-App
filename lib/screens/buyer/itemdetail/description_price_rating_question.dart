@@ -129,7 +129,13 @@ class DescriptionPriceRatingQuestion extends StatelessWidget {
             const HorizontalDivider(),
             GestureDetector(
               onTap: () {
-                traderClick(traderId);
+                showModalBottomSheet(
+                    isScrollControlled: true,
+                    shape: const RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.vertical(top: Radius.circular(10))),
+                    context: context,
+                    builder: (context) => traderClick(traderId));
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
