@@ -65,31 +65,26 @@ class _TwoColumnGridViewState extends State<TwoColumnGridView> {
                               fontWeight: FontWeight.bold,
                             )),
                         Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            const Icon(Icons.star, color: eOrange, size: 20),
-                            Text("${item["averageRating"]}/5",
-                                style: const TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                )),
+                            const Icon(Icons.star,
+                                color: Colors.orange, size: 20),
+                            Text("${item["averageRating"]} /5"),
                             const SizedBox(
                               width: 5,
                             ),
-                            Text("(${item["totalReviews"]})",
-                                style: const TextStyle(
-                                  fontSize: 15,
-                                )),
+                            Text("(${item["totalReviews"]})"),
                           ],
                         ),
                         const SizedBox(
                           height: 10,
                         ),
-                        Text("PKR ${item["price"]}",
-                            style: const TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: eOrange)),
+                        Expanded(
+                          child: Text("${item["price"]} PKR",
+                              style: const TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.orange)),
+                        ),
                       ],
                     ),
                   ),

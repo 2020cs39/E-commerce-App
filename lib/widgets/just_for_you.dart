@@ -11,6 +11,7 @@ class JustForYouSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TabController tabController = DefaultTabController.of(context);
     SizeConfig().init(context);
     return Column(
       children: [
@@ -64,15 +65,17 @@ class JustForYouSection extends StatelessWidget {
                 ),
               ]),
         ),
-        SizedBox(
-          height: SizeConfig.verticalBlockSize! * 50,
-          child: const TabBarView(
-            children: [
-              TwoColumnGridView(),
-              TwoColumnGridView(),
-              TwoColumnGridView(),
-              TwoColumnGridView(),
-            ],
+        Expanded(
+          child: SizedBox(
+            height: SizeConfig.verticalBlockSize! * 50,
+            child: const TabBarView(
+              children: [
+                TwoColumnGridView(),
+                TwoColumnGridView(),
+                TwoColumnGridView(),
+                TwoColumnGridView(),
+              ],
+            ),
           ),
         ),
       ],
