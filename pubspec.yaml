@@ -42,6 +42,7 @@ dependencies:
   bulleted_list: ^0.0.1+0.1a
   image_picker: ^0.8.6+3
   firebase_storage: ^11.0.14
+  firebase_auth: ^4.4.0
 
 dev_dependencies:
   flutter_test:

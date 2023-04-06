@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecommerce_app/screens/seller/sign_in.dart';
 import 'package:ecommerce_app/widgets/button.dart';
 import 'package:ecommerce_app/widgets/input_field.dart';
 import 'package:ecommerce_app/widgets/page_header.dart';
@@ -22,7 +23,7 @@ class SignUpSeller extends StatelessWidget {
     TextEditingController city = TextEditingController();
     TextEditingController address = TextEditingController();
 
-    return ListView(
+    return Scaffold(body:  ListView(
       children: <Widget>[
         Image.asset('assets/images/logo.jpg'),
         SizedBox(height: SizeConfig.verticalBlockSize! * 1.5),
@@ -72,8 +73,13 @@ class SignUpSeller extends StatelessWidget {
             city.text = '';
           },
         ),
+        SizedBox(height: SizeConfig.verticalBlockSize! * 3),
+        MyButton(buttonText: "Already have account? Sign in", onTap: (() => Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SignInSeller() ) ) ) ),
         SizedBox(height: SizeConfig.verticalBlockSize! * 3)
+        
+        
       ],
+    )
     );
   }
 }

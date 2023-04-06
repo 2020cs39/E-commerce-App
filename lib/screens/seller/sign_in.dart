@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecommerce_app/screens/seller/sign_up.dart';
 import 'package:flutter/material.dart';
 
 import '../../util/responsive.dart';
@@ -16,45 +17,52 @@ class SignInSeller extends StatelessWidget {
     SizeConfig().init(context);
     TextEditingController username = TextEditingController();
     TextEditingController password = TextEditingController();
-    return ListView(
-      children: <Widget>[
-        Image.asset('assets/images/logo.jpg'),
-        SizedBox(height: SizeConfig.verticalBlockSize! * 1.5),
-        const PageHeading("Sign In"),
-        SizedBox(height: SizeConfig.verticalBlockSize! * 2),
-        InputField(controller: username, labelHint: "Email",icon:const Icon(Icons.person)),
-        SizedBox(height: SizeConfig.verticalBlockSize! * 2),
-        InputField(controller: password, labelHint: "Password",icon:const Icon(Icons.password)),
-        SizedBox(height: SizeConfig.verticalBlockSize! * 3),
-        MyButton(
-          buttonText: "Sign in",
-          onTap: () async{
-            StreamBuilder(
-              stream: _sellers.snapshots(),
-              builder: ((context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {
-                if (streamSnapshot.hasData) {
-                  ListView.builder(
-                    itemCount: streamSnapshot.data!.docs.length,
-                    itemBuilder: (context, index) {
-                      final DocumentSnapshot documentSnapshot =
-                          streamSnapshot.data!.docs[index];
-                      return Card(
-                        child: ListTile(
-                          title: Text(documentSnapshot['full name']),
-                        ),
+    return Scaffold(
+      body:
+    ListView(
+          children: <Widget>[
+            Image.asset('assets/images/logo.jpg'),
+            SizedBox(height: SizeConfig.verticalBlockSize! * 1.5),
+            const PageHeading("Sign In"),
+            SizedBox(height: SizeConfig.verticalBlockSize! * 2),
+            InputField(controller: username, labelHint: "Email",icon:const Icon(Icons.person)),
+            SizedBox(height: SizeConfig.verticalBlockSize! * 2),
+            InputField(controller: password, labelHint: "Password",icon:const Icon(Icons.password)),
+            SizedBox(height: SizeConfig.verticalBlockSize! * 3),
+            MyButton(
+              buttonText: "Sign in",
+              onTap: () async{
+                StreamBuilder(
+                  stream: _sellers.snapshots(),
+                  builder: ((context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {
+                    if (streamSnapshot.hasData) {
+                      ListView.builder(
+                        itemCount: streamSnapshot.data!.docs.length,
+                        itemBuilder: (context, index) {
+                          final DocumentSnapshot documentSnapshot =
+                              streamSnapshot.data!.docs[index];
+                          return Card(
+                            child: ListTile(
+                              title: Text(documentSnapshot['full name']),
+                            ),
+                          );
+                        },
                       );
-                    },
-                  );
-                }
+                    }
 
-                return const Center(
-                  child: CircularProgressIndicator(),
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }),
                 );
-              }),
-            );
-          },
+              },
+            ),
+            SizedBox(height: SizeConfig.verticalBlockSize! * 3),
+            MyButton(buttonText: "Don't have account? Sign up", onTap: (() => Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SignUpSeller() ) ) ) ),
+            SizedBox(height: SizeConfig.verticalBlockSize! * 3)
+          ],
         )
-      ],
+    
     );
   }
 }
