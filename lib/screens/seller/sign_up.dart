@@ -46,6 +46,7 @@ class SignUpSeller extends StatelessWidget {
         SizedBox(height: SizeConfig.verticalBlockSize! * 3),
         MyButton(
           buttonText: "Sign Up",
+          icon: const Icon(Icons.person_add),
           onTap: () async {
             final String fname = fullName.text;
             final String uname = username.text;

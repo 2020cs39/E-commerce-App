@@ -1,10 +1,14 @@
 import 'package:ecommerce_app/screens/buyer/itemdetail/detail.dart';
 import 'package:ecommerce_app/screens/buyer/sign_up.dart';
 import 'package:ecommerce_app/screens/seller/sign_in.dart';
-import 'package:ecommerce_app/screens/seller/sign_up.dart';
+
+// import 'package:ecommerce_app/screens/seller/add_product.dart';
+import 'package:ecommerce_app/screens/home_page_screen.dart';
+import 'package:ecommerce_app/screens/buyer/add_to_cart.dart';
 import 'package:ecommerce_app/util/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import './screens/home_page_screen.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,11 +21,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return  const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: SignUpBuyer(),
-        // body: ItemDetail(),
+        // body: HomePage(),
+        body: AddToCart(),
         backgroundColor: eLighterGrey,
       ),
     );

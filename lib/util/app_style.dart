@@ -21,6 +21,7 @@ const Color eBlue = Color(0xff5474fd);
 const Color eLightBLue = Color(0xff83b1ff);
 const Color eLighterBLue = Color(0xffc1d4f9);
 const Color eDarkBlue = Color(0xff19202d);
+const Color eOrange = Colors.orange;
 
 // Radius
 const double borderRadius = 16.0;
@@ -53,13 +54,14 @@ final eDiscountedPrice = GoogleFonts.poppins(
 final eRegular = GoogleFonts.poppins(
   color: eDarkBlue,
   fontWeight: FontWeight.w500,
-  fontSize: 16,
+  fontSize: 15,
 );
 
 // Regular with darkBlue
 final eSemiBold = GoogleFonts.poppins(
   color: eDarkBlue,
   fontWeight: FontWeight.w600,
+  fontSize: 16,
 );
 
 // Regular with darkBlue

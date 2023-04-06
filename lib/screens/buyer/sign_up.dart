@@ -48,10 +48,12 @@ class SignUpBuyer extends StatelessWidget {
         InputField(
             controller: phone,
             labelHint: "Phone",
-            icon: const Icon(Icons.phone)),
+            icon: const Icon(Icons.phone)
+            ),
         SizedBox(height: SizeConfig.verticalBlockSize! * 3),
         MyButton(
           buttonText: "Sign Up",
+          icon: const Icon(Icons.person_add),
           onTap: () async {
             final String fname = fullName.text;
             final String uname = username.text;
@@ -71,7 +73,7 @@ class SignUpBuyer extends StatelessWidget {
         MyButton(
             buttonText: "Already have account? Sign in",
             onTap: (() => Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const SignInBuyer())))),
+                MaterialPageRoute(builder: (context) => const SignInBuyer()))), icon: const Icon(Icons.person),),
         SizedBox(height: SizeConfig.verticalBlockSize! * 3)
       ],
     ));

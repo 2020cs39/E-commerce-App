@@ -55,10 +55,10 @@ class SignInSeller extends StatelessWidget {
                     );
                   }),
                 );
-              },
+              }, icon: const Icon(Icons.person),
             ),
             SizedBox(height: SizeConfig.verticalBlockSize! * 3),
-            MyButton(buttonText: "Don't have account? Sign up", onTap: (() => Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SignUpSeller() ) ) ) ),
+            MyButton(buttonText: "Don't have account? Sign up", onTap: (() => Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SignUpSeller() ) ) ), icon: const Icon(Icons.person), ),
             SizedBox(height: SizeConfig.verticalBlockSize! * 3)
           ],
         )

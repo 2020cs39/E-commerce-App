@@ -66,7 +66,13 @@ class SpecDeliveryService extends StatelessWidget {
             // Row for delivery brand name and service
             GestureDetector(
               onTap: () {
-                deliveryClick(id);
+                showModalBottomSheet(
+                    isScrollControlled: true,
+                    shape: const RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.vertical(top: Radius.circular(10))),
+                    context: context,
+                    builder: (context) => deliveryClick(id));
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -80,7 +86,7 @@ class SpecDeliveryService extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    width: SizeConfig.horizontalBlockSize! * 60,
+                    width: SizeConfig.horizontalBlockSize! * 58,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -112,10 +118,10 @@ class SpecDeliveryService extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                      width: SizeConfig.horizontalBlockSize! * 3.8,
+                      width: SizeConfig.horizontalBlockSize! * 4,
                       child: Text(
                         '>',
-                        style: eRegular,
+                        style: eRegular.copyWith(fontSize: 25),
                       )),
                 ],
               ),
@@ -131,7 +137,13 @@ class SpecDeliveryService extends StatelessWidget {
             // Row for service start from here
             GestureDetector(
               onTap: () {
-                serviceClick(id);
+                showModalBottomSheet(
+                    isScrollControlled: true,
+                    shape: const RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.vertical(top: Radius.circular(10))),
+                    context: context,
+                    builder: (context) => serviceClick(id));
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -145,7 +157,7 @@ class SpecDeliveryService extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    width: SizeConfig.horizontalBlockSize! * 60,
+                    width: SizeConfig.horizontalBlockSize! * 58,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -162,7 +174,7 @@ class SpecDeliveryService extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    width: SizeConfig.horizontalBlockSize! * 3.8,
+                    width: SizeConfig.horizontalBlockSize! * 4,
                     child: Text(
                       '>',
                       style: eRegular.copyWith(fontSize: 25),

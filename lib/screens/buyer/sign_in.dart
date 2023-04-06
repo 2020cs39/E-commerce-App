@@ -37,6 +37,7 @@ class SignInBuyer extends StatelessWidget {
         SizedBox(height: SizeConfig.verticalBlockSize! * 3),
         MyButton(
           buttonText: "Sign in",
+          icon: const Icon(Icons.login),
           onTap: () {
             Future<User?> user = signInUsingEmailPassword(
                 email: username.text,
