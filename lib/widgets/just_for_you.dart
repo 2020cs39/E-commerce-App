@@ -11,7 +11,7 @@ class JustForYouSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TabController tabController = DefaultTabController.of(context);
+    TabController? tabController = DefaultTabController.of(context);
     SizeConfig().init(context);
     return Column(
       children: [

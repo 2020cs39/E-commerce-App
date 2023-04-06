@@ -66,7 +66,7 @@ class SignInBuyer extends StatelessWidget {
         MyButton(
             buttonText: "Don't have account? Sign up",
             onTap: (() => Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => SignUpBuyer())))),
+                .push(MaterialPageRoute(builder: (context) => SignUpBuyer()))), icon:const Icon(Icons.person),),
         SizedBox(height: SizeConfig.verticalBlockSize! * 3)
       ],
     ));

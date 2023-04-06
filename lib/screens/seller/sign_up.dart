@@ -75,7 +75,7 @@ class SignUpSeller extends StatelessWidget {
           },
         ),
         SizedBox(height: SizeConfig.verticalBlockSize! * 3),
-        MyButton(buttonText: "Already have account? Sign in", onTap: (() => Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SignInSeller() ) ) ) ),
+        MyButton(buttonText: "Already have account? Sign in", onTap: (() => Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SignInSeller() ) ) ), icon: const Icon(Icons.person), ),
         SizedBox(height: SizeConfig.verticalBlockSize! * 3)
         
         
