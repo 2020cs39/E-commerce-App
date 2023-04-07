@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/screens/buyer/itemdetail/detail.dart';
+import 'package:ecommerce_app/screens/buyer/sign_in.dart';
 import 'package:ecommerce_app/screens/buyer/sign_up.dart';
 import 'package:ecommerce_app/screens/seller/sign_in.dart';
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         // body: HomePage(),
-        body: AddToCart(),
+        body: SignInBuyer(),
         backgroundColor: eLighterGrey,
       ),
     );

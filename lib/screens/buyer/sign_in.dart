@@ -17,7 +17,7 @@ class SignInBuyer extends StatelessWidget {
     TextEditingController username = TextEditingController();
     TextEditingController password = TextEditingController();
     return Scaffold(
-        body: Column(
+        body: ListView(
       children: <Widget>[
         Image.asset('assets/images/logo.jpg'),
         SizedBox(height: SizeConfig.verticalBlockSize! * 1.5),
@@ -44,22 +44,23 @@ class SignInBuyer extends StatelessWidget {
                 password: password.text,
                 context: context);
             print("user");
-            print(user);
-            if (user != null) {
-              showDialog(
-                  context: context,
-                  builder: (BuildContext context) => AlertDialog(
-                        title: const Text('Wrong credentials. Try again'),
-                        actions: [
-                          TextButton(
-                              onPressed: () => Navigator.pop(context, 'Cancel'),
-                              child: const Text('Ok'))
-                        ],
-                      ));
-            } else {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => const HomePage()));
-            }
+            
+            
+            // if (user == null) {
+            //   showDialog(
+            //       context: context,
+            //       builder: (BuildContext context) => AlertDialog(
+            //             title: const Text('Wrong credentials. Try again'),
+            //             actions: [
+            //               TextButton(
+            //                   onPressed: () => Navigator.pop(context, 'Cancel'),
+            //                   child: const Text('Ok'))
+            //             ],
+            //           ));
+            // } else {
+            //   Navigator.of(context)
+            //       .push(MaterialPageRoute(builder: (context) => const HomePage()));
+            // }
           },
         ),
         SizedBox(height: SizeConfig.verticalBlockSize! * 3),
@@ -78,24 +79,43 @@ Future<User?> signInUsingEmailPassword({
   required String password,
   required BuildContext context,
 }) async {
-  FirebaseAuth auth = FirebaseAuth.instance;
-  User? user;
-
   try {
-    UserCredential userCredential = await auth.signInWithEmailAndPassword(
+    UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
       email: email,
       password: password,
     );
-    user = userCredential.user;
+    // If the authentication is successful, navigate to the home screen
+    // ignore: use_build_context_synchronously
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const HomePage()),
+    );
   } on FirebaseAuthException catch (e) {
     if (e.code == 'user-not-found') {
       print('No user found for that email.');
+      showDialog(
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                        title: const Text('No user found for that email. Try again'),
+                        actions: [
+                          TextButton(
+                              onPressed: () => Navigator.pop(context, 'Cancel'),
+                              child: const Text('Ok'))
+                        ],
+                      ));
+
     } else if (e.code == 'wrong-password') {
-      print('Wrong password provided.');
-    } else {
-      print(e.message);
+      print('Wrong password provided for that user.');
+      showDialog(
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                        title: const Text('Wrong password/email entered. Try again'),
+                        actions: [
+                          TextButton(
+                              onPressed: () => Navigator.pop(context, 'Cancel'),
+                              child: const Text('Ok'))
+                        ],
+                      ));
     }
   }
-
-  return user;
 }
