@@ -1,6 +1,6 @@
+import 'package:ecommerce_app/widgets/just_for_you.dart';
 import 'package:flutter/material.dart';
 
-import 'package:ecommerce_app/widgets/just_for_you.dart';
 import '../widgets/carousel.dart';
 import '../widgets/categories_listview.dart';
 import '../widgets/icon_with_text.dart';
@@ -166,7 +166,7 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   height: SizeConfig.verticalBlockSize! * 3,
                 ),
-                const JustForYouSection()
+                const SizedBox(height: 500, child: JustForYouSection())
               ],
             ),
           ),

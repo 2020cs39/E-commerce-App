@@ -1,7 +1,4 @@
 import 'package:ecommerce_app/util/app_style.dart';
-import 'package:ecommerce_app/util/responsive.dart';
-import 'package:ecommerce_app/widgets/categories_listview.dart';
-import 'package:ecommerce_app/widgets/grid_view.dart';
 import 'package:flutter/material.dart';
 import '../../widgets/just_for_you.dart';
 
@@ -21,9 +18,8 @@ class _AddToCartState extends State<AddToCart> {
       length: 4,
       child: SafeArea(
           child: Scaffold(
-        backgroundColor: eLighterGrey,
         appBar: AppBar(
-          backgroundColor: eLighterGrey,
+          backgroundColor: Colors.white,
           leading: IconButton(
             icon: const Icon(Icons.arrow_back, color: Colors.black),
             onPressed: () {
@@ -148,8 +144,8 @@ class _AddToCartState extends State<AddToCart> {
                                 children: [
                                   InkWell(
                                     child: Container(
-                                      height: 30,
-                                      width: 30,
+                                      height: 25,
+                                      width: 25,
                                       decoration: BoxDecoration(
                                         color: eLighterGrey,
                                         borderRadius: BorderRadius.circular(5),
@@ -178,8 +174,8 @@ class _AddToCartState extends State<AddToCart> {
                                   const SizedBox(width: 10),
                                   InkWell(
                                     child: Container(
-                                      height: 30,
-                                      width: 30,
+                                      height: 25,
+                                      width: 25,
                                       decoration: BoxDecoration(
                                         color: eLighterGrey,
                                         borderRadius: BorderRadius.circular(5),
