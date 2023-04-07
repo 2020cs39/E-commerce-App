@@ -25,8 +25,8 @@ class MyApp extends StatelessWidget {
     return  const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        // body: HomePage(),
-        body: SignInBuyer(),
+        body: HomePage(),
+        // body: SignInBuyer(),
         backgroundColor: eLighterGrey,
       ),
     );

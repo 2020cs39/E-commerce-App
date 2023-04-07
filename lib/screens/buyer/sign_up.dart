@@ -1,5 +1,7 @@
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_app/screens/buyer/sign_in.dart';
+import 'package:ecommerce_app/screens/home_page_screen.dart';
 import 'package:ecommerce_app/widgets/button.dart';
 import 'package:ecommerce_app/widgets/input_field.dart';
 import 'package:ecommerce_app/widgets/page_header.dart';
@@ -61,7 +63,7 @@ class SignUpBuyer extends StatelessWidget {
             final String call = phone.text;
 
             if (uname != null && pin != null && fname != null && call != null) {
-              mailRegister(uname, pin);
+              mailRegister(uname, pin,context);
               username.text = '';
               password.text = '';
               fullName.text = '';
@@ -80,12 +82,51 @@ class SignUpBuyer extends StatelessWidget {
   }
 }
 
-Future<String?> mailRegister(String mail, String pwd) async {
+Future<String?> mailRegister(String mail, String pwd, BuildContext context) async {
+  // try {
+  //   await FirebaseAuth.instance
+  //       .createUserWithEmailAndPassword(email: mail, password: pwd);
+  //   return null;
+  // } on FirebaseAuthException catch (ex) {
+  //   return "${ex.code}: ${ex.message}";
+  // }
+ 
   try {
-    await FirebaseAuth.instance
-        .createUserWithEmailAndPassword(email: mail, password: pwd);
-    return null;
-  } on FirebaseAuthException catch (ex) {
-    return "${ex.code}: ${ex.message}";
+    UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: mail,
+      password: pwd,
+    );
+    // If the sign up is successful, navigate to the home screen
+    // ignore: use_build_context_synchronously
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) =>const HomePage()),
+    );
+  } on FirebaseAuthException catch (e) {
+    if (e.code == 'email-already-in-use') {
+      // Show a message to the user that an account with that email already exists
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('An account with that email already exists.'),
+        ),
+      );
+    } else if (e.code == 'weak-password') {
+      // Show a message to the user that the password is too weak
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('The password is too weak.'),
+        ),
+      );
+    } else {
+       print(e.message);
+    }
+  } catch (e) {
+    print("exception is thrownwnnnwnwnw");
+    print(e);
+    ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('An error occured. Please try again later.'),
+        ),
+      );
   }
 }
