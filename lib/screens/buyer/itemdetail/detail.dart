@@ -23,8 +23,6 @@ class _ItemDetailState extends State<ItemDetail> {
     convertFutureIntoProduct(getProductData('4nPrFCfhoISvWyQXgbP6'));
   }
 
-  // Product variable variables and functions start here
-  //////////////////////////////////////////////////////
   late Product prdData;
   String itemId = '';
   String itemName = '';
@@ -49,13 +47,8 @@ class _ItemDetailState extends State<ItemDetail> {
       itemQuestion = 'Ask any question about $itemName';
     });
     futureIntoSeller(getSellerData('biUEmsfSfRl5XOODdDiJ'));
-    // print(prdData.imageUrl);
   }
-  // Product variable variables and functions ends here
-  /////////////////////////////////////////////////////
 
-  // Seller variables and function start form here
-  //////////////////////////////////////////////
   late Seller sellerData;
   String traderId = '';
   String traderName = '';
@@ -65,8 +58,6 @@ class _ItemDetailState extends State<ItemDetail> {
       traderName = sellerData.fullName;
     });
   }
-  // Seller variables and function ends form here
-  //////////////////////////////////////////////
 
   String itemRating = '4.5';
   static String itemRatingGiveBy = '18';
@@ -110,54 +101,56 @@ class _ItemDetailState extends State<ItemDetail> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return ListView(
-      scrollDirection: Axis.vertical,
-      children: [
-        SizedBox(
-          height: SizeConfig.verticalBlockSize! * 0,
-        ),
-        SizedBox(
-          height: SizeConfig.verticalBlockSize! * 34,
-          child: Image.network(
-              'https://firebasestorage.googleapis.com/v0/b/e-commerce-b621a.appspot.com/o/images%2F1677519313323?alt=media&token=3c1687f9-3037-44bc-9520-879f3741e7ab',
-              fit: BoxFit.cover),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        DescriptionPriceRatingQuestion(
-          id: itemId,
-          description: itemDesc,
-          discountedPrice: itemDiscountedPrice,
-          totalPrice: itemTotalPrice,
-          discount: itemDiscount,
-          rating: itemRating,
-          ratingGivenBy: itemRatingGiveBy,
-          sold: itemSold,
-          questionText: itemQuestion,
-          questionClick: clickItemQuestion,
-          traderId: traderId,
-          traderName: traderName,
-          traderClick: clickTrader,
-        ),
-        SpecDeliveryService(
-          id: itemId,
-          brandName: itemBrandName,
-          deliveryTime: itemDeliveryTime,
-          deliveryPrice: itemDeliveryPrice,
-          shipFrom: itemShipFrom,
-          deliveryClick: clickDelivery,
-          returnTime: itemReturnTime,
-          warranty: itemWarranty,
-          serviceClick: clickService,
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        DescriptionInDetail(
-            descriptionText: detailDescription,
-            descriptionList: detailDescriptionList),
-      ],
+    return Scaffold(
+      body: ListView(
+        scrollDirection: Axis.vertical,
+        children: [
+          SizedBox(
+            height: SizeConfig.verticalBlockSize! * 0,
+          ),
+          SizedBox(
+            height: SizeConfig.verticalBlockSize! * 34,
+            child: Image.network(
+                'https://firebasestorage.googleapis.com/v0/b/e-commerce-b621a.appspot.com/o/images%2F1677519313323?alt=media&token=3c1687f9-3037-44bc-9520-879f3741e7ab',
+                fit: BoxFit.cover),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          DescriptionPriceRatingQuestion(
+            id: itemId,
+            description: itemDesc,
+            discountedPrice: itemDiscountedPrice,
+            totalPrice: itemTotalPrice,
+            discount: itemDiscount,
+            rating: itemRating,
+            ratingGivenBy: itemRatingGiveBy,
+            sold: itemSold,
+            questionText: itemQuestion,
+            questionClick: clickItemQuestion,
+            traderId: traderId,
+            traderName: traderName,
+            traderClick: clickTrader,
+          ),
+          SpecDeliveryService(
+            id: itemId,
+            brandName: itemBrandName,
+            deliveryTime: itemDeliveryTime,
+            deliveryPrice: itemDeliveryPrice,
+            shipFrom: itemShipFrom,
+            deliveryClick: clickDelivery,
+            returnTime: itemReturnTime,
+            warranty: itemWarranty,
+            serviceClick: clickService,
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          DescriptionInDetail(
+              descriptionText: detailDescription,
+              descriptionList: detailDescriptionList),
+        ],
+      ),
     );
   }
 }
